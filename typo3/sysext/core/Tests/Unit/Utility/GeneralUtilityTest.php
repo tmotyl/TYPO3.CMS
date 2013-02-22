@@ -4241,4 +4241,122 @@ text with a ' . $urlMatch . '$|s'),
 		$this->assertTrue(preg_match($expectedPreg, Utility\GeneralUtility::substUrlsInPlainText($input, 1, 'http://example.com/index.php')) == 1);
 	}
 
+	/**
+	 * @test
+	 */
+	public function testGetUrlRedirects() {
+		require_once __DIR__ . '/Fixtures/GeneralUtilityFixture.php';
+		if (!$GLOBALS['TYPO3_CONF_VARS']['SYS']['curlUse']) {
+			$this->markTestSkipped('This test makes sense only if $TYPO3_CONF_VARS[\'SYS\'][\'curlUse\'] is enabled.');
+		}
+		$_SERVER['HTTP_HOST'] = 'master.dev';
+		$url = Utility\GeneralUtility::locationHeaderUrl('/typo3/sysext/core/Tests/Unit/Utility/Fixtures/redirect.php');
+
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOFOLLOWLOCATION, TRUE);
+		$content = Utility\GeneralUtilityFixture::getUrl($url);
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOFOLLOWLOCATION, FALSE);
+
+		$this->assertEquals('Success.', $content);
+	}
+
+	/**
+	 * @test
+	 */
+	public function testGetUrlRedirectsWithBrokenCurl() {
+		require_once __DIR__ . '/Fixtures/GeneralUtilityFixture.php';
+		if (!$GLOBALS['TYPO3_CONF_VARS']['SYS']['curlUse']) {
+			$this->markTestSkipped('This test makes sense only if $TYPO3_CONF_VARS[\'SYS\'][\'curlUse\'] is enabled.');
+		}
+
+		$_SERVER['HTTP_HOST'] = 'master.dev';
+		$url = Utility\GeneralUtility::locationHeaderUrl('/typo3/sysext/core/Tests/Unit/Utility/Fixtures/redirect.php');
+
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOFOLLOWLOCATION, TRUE);
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOREDIRECTURL, TRUE);
+		$content = Utility\GeneralUtilityFixture::getUrl($url);
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOFOLLOWLOCATION, FALSE);
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOREDIRECTURL, FALSE);
+
+		$this->assertEquals('Success.', $content);
+	}
+
+	/**
+	 * @test
+	 */
+	public function testGetUrlRedirectsPlusHeadersWithBrokenCurl() {
+		require_once __DIR__ . '/Fixtures/GeneralUtilityFixture.php';
+		if (!$GLOBALS['TYPO3_CONF_VARS']['SYS']['curlUse']) {
+			$this->markTestSkipped('This test makes sense only if $TYPO3_CONF_VARS[\'SYS\'][\'curlUse\'] is enabled.');
+		}
+
+		$_SERVER['HTTP_HOST'] = 'master.dev';
+		$url = Utility\GeneralUtility::locationHeaderUrl('/typo3/sysext/core/Tests/Unit/Utility/Fixtures/redirect.php');
+
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOFOLLOWLOCATION, TRUE);
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOREDIRECTURL, TRUE);
+		$content = Utility\GeneralUtilityFixture::getUrl($url, 1);
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOFOLLOWLOCATION, FALSE);
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOREDIRECTURL, FALSE);
+
+		$this->assertContains('Success.', $content);
+		$this->assertContains('Date:', $content);
+	}
+
+	/**
+	 * @test
+	 */
+	public function testGetUrlRedirectsWithoutUrl() {
+		require_once __DIR__ . '/Fixtures/GeneralUtilityFixture.php';
+		if (!$GLOBALS['TYPO3_CONF_VARS']['SYS']['curlUse']) {
+			$this->markTestSkipped('This test makes sense only if $TYPO3_CONF_VARS[\'SYS\'][\'curlUse\'] is enabled.');
+		}
+
+		$_SERVER['HTTP_HOST'] = 'master.dev';
+		$url = Utility\GeneralUtility::locationHeaderUrl('/typo3/sysext/core/Tests/Unit/Utility/Fixtures/redirect.php?redirectNoLocation=1');
+
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOFOLLOWLOCATION, TRUE);
+		$content = Utility\GeneralUtilityFixture::getUrl($url);
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOFOLLOWLOCATION, FALSE);
+
+		$this->assertFalse($content);
+	}
+
+	/**
+	 * @test
+	 */
+	public function testGetUrlRedirectsWithoutUrlAndReport() {
+		if (!$GLOBALS['TYPO3_CONF_VARS']['SYS']['curlUse']) {
+			$this->markTestSkipped('This test makes sense only if $TYPO3_CONF_VARS[\'SYS\'][\'curlUse\'] is enabled.');
+		}
+
+		$_SERVER['HTTP_HOST'] = 'master.dev';
+		$url = Utility\GeneralUtility::locationHeaderUrl('/typo3/sysext/core/Tests/Unit/Utility/Fixtures/redirect.php?redirectNoLocation=1');
+
+		$report = array();
+
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOFOLLOWLOCATION, TRUE);
+		$content = Utility\GeneralUtilityFixture::getUrl($url, 1, FALSE, $report);
+		Utility\GeneralUtilityFixture::setTestModeOption(Utility\GeneralUtilityFixture::TESTOPTION_NOFOLLOWLOCATION, FALSE);
+
+		$this->assertFalse($content);
+		$this->assertEquals(302, $report['http_code']);
+		$this->assertEquals(52, $report['error']);
+	}
+
+	/**
+	 * @test
+	 */
+	public function testGetUrlRedirectsWithFollowActive() {
+		if (!$GLOBALS['TYPO3_CONF_VARS']['SYS']['curlUse']) {
+			$this->markTestSkipped('This test makes sense only if $TYPO3_CONF_VARS[\'SYS\'][\'curlUse\'] is enabled.');
+		}
+
+		$_SERVER['HTTP_HOST'] = 'master.dev';
+		$url = Utility\GeneralUtility::locationHeaderUrl('/typo3/sysext/core/Tests/Unit/Utility/Fixtures/redirect.php');
+
+		$content = Utility\GeneralUtilityFixture::getUrl($url);
+
+		$this->assertEquals('Success.', $content);
+	}
+
 }
