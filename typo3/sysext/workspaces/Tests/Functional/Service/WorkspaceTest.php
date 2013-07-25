@@ -31,27 +31,28 @@ namespace TYPO3\CMS\Workspaces\Service;
  *
  * @author Workspaces Team (http://forge.typo3.org/projects/show/typo3v4-workspaces)
  */
-class WorkspacesServiceTest extends \tx_phpunit_database_testcase {
+class WorkspacesServiceTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 
 	/**
 
 	 */
 	public function setUp() {
+		parent::setUp();
 		$GLOBALS['BE_USER']->user['admin'] = 1;
-		$this->createDatabase();
-		$db = $this->useTestDatabase();
-		$this->importStdDB();
-		$this->importExtensions(array('cms', 'version', 'workspaces'));
+//		$this->createTestDatabase();
+//		$db = $this->useTestDatabase();
+//		$this->createDatabaseStructure();
+//		$this->importExtensions(array('cms', 'version', 'workspaces'));
 	}
 
 	/**
 
 	 */
-	public function tearDown() {
-		$this->cleanDatabase();
-		$this->dropDatabase();
-		$GLOBALS['TYPO3_DB']->sql_select_db(TYPO3_db);
-	}
+//	public function tearDown() {
+//		$this->cleanDatabase();
+//		$this->dropDatabase();
+//		$GLOBALS['TYPO3_DB']->sql_select_db(TYPO3_db);
+//	}
 
 	/**
 	 * @test

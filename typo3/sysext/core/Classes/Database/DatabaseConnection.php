@@ -1417,6 +1417,7 @@ class DatabaseConnection {
 		if ($this->debugOutput) {
 			$this->debug('admin_query', $query);
 		}
+
 		return $res;
 	}
 
