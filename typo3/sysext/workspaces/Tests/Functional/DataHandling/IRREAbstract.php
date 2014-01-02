@@ -26,6 +26,7 @@ namespace TYPO3\CMS\Workspaces\Tests\Functional\DataHandling;
 
 require_once(ORIGINAL_ROOT . 'typo3/sysext/core/Tests/Functional/DataHandling/IRREAbstract.php');
 
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -179,7 +180,7 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\Functional\DataHandlin
 		foreach ($tables as $tableName => $idList) {
 			$ids = GeneralUtility::trimExplode(',', $idList, TRUE);
 			foreach ($ids as $id) {
-				$workspaceVersion = \TYPO3\CMS\Backend\Utility\BackendUtility::getWorkspaceVersionOfRecord($workspaceId, $tableName, $id);
+				$workspaceVersion = BackendUtility::getWorkspaceVersionOfRecord($workspaceId, $tableName, $id);
 				$this->assertTrue(
 					($expected ? $workspaceVersion !== FALSE : $workspaceVersion === FALSE),
 					'Workspace version for ' . $tableName . ':' . $id . ($expected ? ' not' : '') . ' availabe'
@@ -189,13 +190,13 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\Functional\DataHandlin
 	}
 
 	/**
-	 * Gets a tx_version_tcemain mock.
+	 * Gets a \TYPO3\CMS\Version\Hook\DataHandlerHook mock.
 	 *
 	 * @param integer $expectsGetCommandMap (optional) Expects number of invocations to getCommandMap method
 	 * @return \TYPO3\CMS\Version\Hook\DataHandlerHook
 	 */
 	protected function getVersionTceMainHookMock($expectsGetCommandMap = NULL) {
-		$this->versionTceMainHookMock = $this->getMock('tx_version_tcemain', array('getCommandMap'));
+		$this->versionTceMainHookMock = $this->getMock('TYPO3\\CMS\\Version\\Hook\\DataHandlerHook', array('getCommandMap'));
 
 		if (is_integer($expectsGetCommandMap) && $expectsGetCommandMap >= 0) {
 			$this->versionTceMainHookMock->expects($this->exactly($expectsGetCommandMap))->method('getCommandMap')
@@ -234,7 +235,7 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\Functional\DataHandlin
 				}
 			}
 		} else {
-			$workspaceVersion = \TYPO3\CMS\Backend\Utility\BackendUtility::getWorkspaceVersionOfRecord($workspaceId, $tableName, $id);
+			$workspaceVersion = BackendUtility::getWorkspaceVersionOfRecord($workspaceId, $tableName, $id);
 			if ($workspaceVersion !== FALSE) {
 				return $workspaceVersion['uid'];
 			}
@@ -365,7 +366,7 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\Functional\DataHandlin
 	}
 
 	public function getVersionTceMainCommandMapCallback(DataHandler $tceMain, array $commandMap) {
-		$this->versionTceMainCommandMap = GeneralUtility::makeInstance('tx_version_tcemain_CommandMap', $this->versionTceMainHookMock, $tceMain, $commandMap);
+		$this->versionTceMainCommandMap = GeneralUtility::makeInstance('TYPO3\\CMS\\Version\\DataHandler\\CommandMap', $this->versionTceMainHookMock, $tceMain, $commandMap);
 		return $this->versionTceMainCommandMap;
 	}
 

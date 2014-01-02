@@ -24,6 +24,9 @@ namespace TYPO3\CMS\Core\Tests\Functional\DataHandling;
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * Generic test helpers.
  *
@@ -104,7 +107,7 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 		$commandStructure = array();
 
 		foreach ($tables as $tableName => $idList) {
-			$ids = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $idList, TRUE);
+			$ids = GeneralUtility::trimExplode(',', $idList, TRUE);
 			foreach ($ids as $id) {
 				$commandStructure[$tableName][$id] = array(
 					$command => $value
@@ -166,7 +169,7 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 		$elements = array();
 
 		foreach ($itemArray as $item) {
-			$elements[$item['table']][$item['id']] = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($item['table'], $item['id']);
+			$elements[$item['table']][$item['id']] = BackendUtility::getRecord($item['table'], $item['id']);
 		}
 
 		return $elements;
@@ -249,7 +252,7 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return string
 	 */
 	protected function getFieldValue($tableName, $id, $fieldName) {
-		$record = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($tableName, $id, $fieldName);
+		$record = BackendUtility::getRecord($tableName, $id, $fieldName);
 
 		if (!is_array($record)) {
 			$this->fail('Record ' . $tableName . ':' . $id . ' not available');
@@ -259,12 +262,12 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	}
 
 	/**
-	 * Gets instance of t3lib_loadDBGroup.
+	 * Gets instance of \TYPO3\CMS\Core\Database\RelationHandler.
 	 *
-	 * @return \t3lib_loadDBGroup
+	 * @return \TYPO3\CMS\Core\Database\RelationHandler
 	 */
 	protected function getLoadDbGroup() {
-		$loadDbGroup = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('t3lib_loadDBGroup');
+		$loadDbGroup = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Database\\RelationHandler');
 
 		return $loadDbGroup;
 	}
@@ -275,7 +278,7 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return \TYPO3\CMS\Core\DataHandling\DataHandler
 	 */
 	protected function getTceMain() {
-		$tceMain = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('t3lib_TCEmain');
+		$tceMain = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\DataHandling\\DataHandler');
 		return $tceMain;
 	}
 
@@ -380,6 +383,8 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	}
 
 	/**
+	 * Gets log entries from the sys_log
+	 *
 	 * @return array
 	 */
 	protected function getLogEntries() {
