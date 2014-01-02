@@ -194,10 +194,6 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return array
 	 */
 	protected function getTcaFieldConfiguration($tableName, $fieldName) {
-		if (!isset($GLOBALS['TCA'][$tableName]['columns'])) {
-			\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA($tableName);
-		}
-
 		if (!isset($GLOBALS['TCA'][$tableName]['columns'][$fieldName]['config'])) {
 			$this->fail('TCA definition for field ' . $tableName . '.' . $fieldName . ' not available');
 		}
@@ -213,10 +209,6 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return void
 	 */
 	protected function setTcaFieldConfiguration($tableName, $fieldName, $propertyName, $value) {
-		if (!isset($GLOBALS['TCA'][$tableName]['columns'])) {
-			\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA($tableName);
-		}
-
 		if (isset($GLOBALS['TCA'][$tableName]['columns'][$fieldName]['config'])) {
 			$GLOBALS['TCA'][$tableName]['columns'][$fieldName]['config'][$propertyName] = $value;
 		}
@@ -230,10 +222,6 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 	 * @return void
 	 */
 	protected function setTcaFieldConfigurationBehaviour($tableName, $fieldName, $behaviourName, $value) {
-		if (!isset($GLOBALS['TCA'][$tableName]['columns'])) {
-			\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA($tableName);
-		}
-
 		if (isset($GLOBALS['TCA'][$tableName]['columns'][$fieldName]['config'])) {
 			if (!isset($GLOBALS['TCA'][$tableName]['columns'][$fieldName]['config']['behaviour'])) {
 				$GLOBALS['TCA'][$tableName]['columns'][$fieldName]['config']['behaviour'] = array();
