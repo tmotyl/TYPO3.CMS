@@ -1,5 +1,5 @@
 <?php
-t3lib_extMgm::allowTableOnStandardPages("tx_irretutorial_mnmmasym_hotel");
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages("tx_irretutorial_mnmmasym_hotel");
 
 $TCA["tx_irretutorial_mnmmasym_hotel"] = Array (
 	"ctrl" => Array (
@@ -16,8 +16,8 @@ $TCA["tx_irretutorial_mnmmasym_hotel"] = Array (
 		"enablecolumns" => Array (
 			"disabled" => "hidden",
 		),
-		"dynamicConfigFile" => t3lib_extMgm::extPath($_EXTKEY)."Configuration/Tca/tca.mnmmasym.php",
-		"iconfile" => t3lib_extMgm::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_hotel.gif",
+		"dynamicConfigFile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)."Configuration/Tca/tca.mnmmasym.php",
+		"iconfile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_hotel.gif",
 		'versioningWS' => TRUE,
 		'origUid' => 't3_origuid',
 		'dividers2tabs' => TRUE,
@@ -28,7 +28,7 @@ $TCA["tx_irretutorial_mnmmasym_hotel"] = Array (
 );
 
 
-t3lib_extMgm::allowTableOnStandardPages("tx_irretutorial_mnmmasym_offer");
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages("tx_irretutorial_mnmmasym_offer");
 
 $TCA["tx_irretutorial_mnmmasym_offer"] = Array (
 	"ctrl" => Array (
@@ -45,8 +45,8 @@ $TCA["tx_irretutorial_mnmmasym_offer"] = Array (
 		"enablecolumns" => Array (
 			"disabled" => "hidden",
 		),
-		"dynamicConfigFile" => t3lib_extMgm::extPath($_EXTKEY)."Configuration/Tca/tca.mnmmasym.php",
-		"iconfile" => t3lib_extMgm::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_offer.gif",
+		"dynamicConfigFile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)."Configuration/Tca/tca.mnmmasym.php",
+		"iconfile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_offer.gif",
 		'versioningWS' => TRUE,
 		'origUid' => 't3_origuid',
 		'dividers2tabs' => TRUE,
@@ -57,7 +57,7 @@ $TCA["tx_irretutorial_mnmmasym_offer"] = Array (
 );
 
 
-t3lib_extMgm::allowTableOnStandardPages("tx_irretutorial_mnmmasym_price");
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages("tx_irretutorial_mnmmasym_price");
 
 $TCA["tx_irretutorial_mnmmasym_price"] = Array (
 	"ctrl" => Array (
@@ -74,8 +74,8 @@ $TCA["tx_irretutorial_mnmmasym_price"] = Array (
 		"enablecolumns" => Array (
 			"disabled" => "hidden",
 		),
-		"dynamicConfigFile" => t3lib_extMgm::extPath($_EXTKEY)."Configuration/Tca/tca.mnmmasym.php",
-		"iconfile" => t3lib_extMgm::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_price.gif",
+		"dynamicConfigFile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)."Configuration/Tca/tca.mnmmasym.php",
+		"iconfile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_price.gif",
 		'versioningWS' => TRUE,
 		'origUid' => 't3_origuid',
 		'dividers2tabs' => TRUE,

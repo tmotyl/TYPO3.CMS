@@ -1,5 +1,5 @@
 <?php
-t3lib_extMgm::allowTableOnStandardPages("tx_irretutorial_mnsym_hotel");
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages("tx_irretutorial_mnsym_hotel");
 
 $TCA["tx_irretutorial_mnsym_hotel"] = Array (
 	"ctrl" => Array (
@@ -16,8 +16,8 @@ $TCA["tx_irretutorial_mnsym_hotel"] = Array (
 		"enablecolumns" => Array (
 			"disabled" => "hidden",
 		),
-		"dynamicConfigFile" => t3lib_extMgm::extPath($_EXTKEY)."Configuration/Tca/tca.mnsym.php",
-		"iconfile" => t3lib_extMgm::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_hotel.gif",
+		"dynamicConfigFile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)."Configuration/Tca/tca.mnsym.php",
+		"iconfile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_hotel.gif",
 		'versioningWS' => TRUE,
 		'origUid' => 't3_origuid',
 		'dividers2tabs' => TRUE,
@@ -28,7 +28,7 @@ $TCA["tx_irretutorial_mnsym_hotel"] = Array (
 );
 
 
-t3lib_extMgm::allowTableOnStandardPages("tx_irretutorial_mnsym_hotel_rel");
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages("tx_irretutorial_mnsym_hotel_rel");
 
 $TCA["tx_irretutorial_mnsym_hotel_rel"] = Array (
 	"ctrl" => Array (
@@ -44,8 +44,8 @@ $TCA["tx_irretutorial_mnsym_hotel_rel"] = Array (
 		"enablecolumns" => Array (
 			"disabled" => "hidden",
 		),
-		"dynamicConfigFile" => t3lib_extMgm::extPath($_EXTKEY)."Configuration/Tca/tca.mnsym.php",
-		"iconfile" => t3lib_extMgm::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_hotel_rel.gif",
+		"dynamicConfigFile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)."Configuration/Tca/tca.mnsym.php",
+		"iconfile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_hotel_rel.gif",
 		'versioningWS' => TRUE,
 		'origUid' => 't3_origuid',
 		// @see http://forge.typo3.org/issues/29278 which solves it implicitly in the Core

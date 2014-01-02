@@ -1,5 +1,5 @@
 <?php
-t3lib_extMgm::allowTableOnStandardPages("tx_irretutorial_1nff_hotel");
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages("tx_irretutorial_1nff_hotel");
 
 $TCA["tx_irretutorial_1nff_hotel"] = Array (
 	"ctrl" => Array (
@@ -16,8 +16,8 @@ $TCA["tx_irretutorial_1nff_hotel"] = Array (
 		"enablecolumns" => Array (
 			"disabled" => "hidden",
 		),
-		"dynamicConfigFile" => t3lib_extMgm::extPath($_EXTKEY)."Configuration/Tca/tca.1nff.php",
-		"iconfile" => t3lib_extMgm::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_hotel.gif",
+		"dynamicConfigFile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)."Configuration/Tca/tca.1nff.php",
+		"iconfile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_hotel.gif",
 		'versioningWS' => TRUE,
 		'origUid' => 't3_origuid',
 		// @see http://forge.typo3.org/issues/29278 which solves it implicitly in the Core
@@ -30,7 +30,7 @@ $TCA["tx_irretutorial_1nff_hotel"] = Array (
 );
 
 
-t3lib_extMgm::allowTableOnStandardPages("tx_irretutorial_1nff_offer");
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages("tx_irretutorial_1nff_offer");
 
 $TCA["tx_irretutorial_1nff_offer"] = Array (
 	"ctrl" => Array (
@@ -47,8 +47,8 @@ $TCA["tx_irretutorial_1nff_offer"] = Array (
 		"enablecolumns" => Array (
 			"disabled" => "hidden",
 		),
-		"dynamicConfigFile" => t3lib_extMgm::extPath($_EXTKEY)."Configuration/Tca/tca.1nff.php",
-		"iconfile" => t3lib_extMgm::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_offer.gif",
+		"dynamicConfigFile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)."Configuration/Tca/tca.1nff.php",
+		"iconfile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_offer.gif",
 		'versioningWS' => TRUE,
 		'origUid' => 't3_origuid',
 		// @see http://forge.typo3.org/issues/29278 which solves it implicitly in the Core
@@ -61,7 +61,7 @@ $TCA["tx_irretutorial_1nff_offer"] = Array (
 );
 
 
-t3lib_extMgm::allowTableOnStandardPages("tx_irretutorial_1nff_price");
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages("tx_irretutorial_1nff_price");
 
 $TCA["tx_irretutorial_1nff_price"] = Array (
 	"ctrl" => Array (
@@ -78,8 +78,8 @@ $TCA["tx_irretutorial_1nff_price"] = Array (
 		"enablecolumns" => Array (
 			"disabled" => "hidden",
 		),
-		"dynamicConfigFile" => t3lib_extMgm::extPath($_EXTKEY)."Configuration/Tca/tca.1nff.php",
-		"iconfile" => t3lib_extMgm::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_price.gif",
+		"dynamicConfigFile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)."Configuration/Tca/tca.1nff.php",
+		"iconfile" => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY)."Resources/Public/Icons/icon_tx_irretutorial_price.gif",
 		'versioningWS' => TRUE,
 		'origUid' => 't3_origuid',
 		// @see http://forge.typo3.org/issues/29278 which solves it implicitly in the Core

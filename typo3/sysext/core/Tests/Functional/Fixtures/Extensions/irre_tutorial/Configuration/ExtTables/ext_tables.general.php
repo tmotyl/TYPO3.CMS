@@ -3,8 +3,7 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-t3lib_div::loadTCA('pages');
-t3lib_extMgm::addTCAcolumns(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
 	'pages',
 	 array (
 		'tx_irretutorial_hotels' => array (
@@ -30,14 +29,12 @@ t3lib_extMgm::addTCAcolumns(
 	),
 	1
 );
-t3lib_extMgm::addToAllTCAtypes(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
 	'pages',
 	'--div--;LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:pages.doktype.div.irre, tx_irretutorial_hotels;;;;1-1-1'
 );
 
-
-t3lib_div::loadTCA('pages_language_overlay');
-t3lib_extMgm::addTCAcolumns(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
 	'pages_language_overlay',
 	 array (
 		'tx_irretutorial_hotels' => array (
@@ -63,14 +60,13 @@ t3lib_extMgm::addTCAcolumns(
 	),
 	1
 );
-t3lib_extMgm::addToAllTCAtypes(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
 	'pages_language_overlay',
 	'--div--;LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:pages.doktype.div.irre, tx_irretutorial_hotels;;;;1-1-1'
 );
 
 
-t3lib_div::loadTCA('tt_content');
-t3lib_extMgm::addTCAcolumns(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
 	'tt_content',
 	 array (
 		'tx_irretutorial_flexform' => array (
@@ -86,7 +82,8 @@ t3lib_extMgm::addTCAcolumns(
 	),
 	1
 );
-t3lib_extMgm::addToAllTCAtypes(
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
 	'tt_content',
 	'--div--;LLL:EXT:irre_tutorial/Resources/Private/Language/locallang_db.xml:tt_content.div.irre, tx_irretutorial_flexform;;;;1-1-1'
 );
