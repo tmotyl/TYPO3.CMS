@@ -226,7 +226,7 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\Functional\DataHandlin
 	 * @param boolean $directLookup
 	 * @return boolean
 	 */
-	protected function getWorkpaceVersionId($tableName, $id, $workspaceId = self::VALUE_WorkspaceId, $directLookup = FALSE) {
+	protected function getWorkspaceVersionId($tableName, $id, $workspaceId = self::VALUE_WorkspaceId, $directLookup = FALSE) {
 		if ($directLookup) {
 			$records = $this->getAllRecords($tableName);
 			foreach ($records as $record) {
@@ -257,7 +257,7 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\Functional\DataHandlin
 			$ids = GeneralUtility::trimExplode(',', $idList, TRUE);
 			foreach ($ids as $id) {
 				$failureMessage = 'Delete placeholder of "' . $tableName . ':' . $id . '"';
-				$versionizedId = $this->getWorkpaceVersionId($tableName, $id);
+				$versionizedId = $this->getWorkspaceVersionId($tableName, $id);
 				$this->assertTrue(isset($records[$versionizedId]), $failureMessage . ' does not exist');
 				$this->assertEquals($id, $records[$versionizedId]['t3_origuid'], $failureMessage . ' has wrong relation to live workspace');
 				$this->assertEquals($id, $records[$versionizedId]['t3ver_oid'], $failureMessage . ' has wrong relation to live workspace');
@@ -322,7 +322,7 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\Functional\DataHandlin
 				);
 
 				if (is_integer($workspaceId)) {
-					$workspaceVersionId = $this->getWorkpaceVersionId($table, $uid, $workspaceId, TRUE);
+					$workspaceVersionId = $this->getWorkspaceVersionId($table, $uid, $workspaceId, TRUE);
 					$intersection = array_intersect_assoc($data, $records[$workspaceVersionId]);
 					$differences = array_intersect_key($records[$workspaceVersionId], array_diff_assoc($data, $records[$workspaceVersionId]));
 

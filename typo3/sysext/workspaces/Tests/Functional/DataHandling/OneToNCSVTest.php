@@ -76,7 +76,7 @@ class OneToNCSVTest extends IRREAbstract {
 		$liveElements = $this->versionizeAllChildrenWithParent();
 		$this->assertWorkspaceVersions($liveElements);
 
-		$versionizedHotelId = $this->getWorkpaceVersionId(self::TABLE_Hotel, 1);
+		$versionizedHotelId = $this->getWorkspaceVersionId(self::TABLE_Hotel, 1);
 
 			// Workspace:
 		$this->assertChildren(
@@ -86,13 +86,13 @@ class OneToNCSVTest extends IRREAbstract {
 					'tableName' => self::TABLE_Offer,
 					't3ver_oid' => 1,
 					't3_origuid' => 1,
-					self::FIELD_Offers_Prices => $this->getWorkpaceVersionId(self::TABLE_Price, 1) . ',' . $this->getWorkpaceVersionId(self::TABLE_Price, 2),
+					self::FIELD_Offers_Prices => $this->getWorkspaceVersionId(self::TABLE_Price, 1) . ',' . $this->getWorkspaceVersionId(self::TABLE_Price, 2),
 				),
 				array(
 					'tableName' => self::TABLE_Offer,
 					't3ver_oid' => 2,
 					't3_origuid' => 2,
-					self::FIELD_Offers_Prices => $this->getWorkpaceVersionId(self::TABLE_Price, 3),
+					self::FIELD_Offers_Prices => $this->getWorkspaceVersionId(self::TABLE_Price, 3),
 				),
 			)
 		);
@@ -129,8 +129,8 @@ class OneToNCSVTest extends IRREAbstract {
 			)
 		);
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 2);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 3);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 2);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 3);
 
 		$liveElements = array(
 			self::TABLE_Hotel => '1',
@@ -144,7 +144,7 @@ class OneToNCSVTest extends IRREAbstract {
 		$this->simulateEditing($liveElementsToBeVersionized);
 		$this->assertWorkspaceVersions($liveElements);
 
-		$versionizedHotelId = $this->getWorkpaceVersionId(self::TABLE_Hotel, 1);
+		$versionizedHotelId = $this->getWorkspaceVersionId(self::TABLE_Hotel, 1);
 
 			// Workspace:
 		$this->assertChildren(
@@ -155,7 +155,7 @@ class OneToNCSVTest extends IRREAbstract {
 					't3ver_oid' => 1,
 					't3_origuid' => 1,
 					't3ver_id' => 1,
-					self::FIELD_Offers_Prices => $this->getWorkpaceVersionId(self::TABLE_Price, 1) . ',' . $this->getWorkpaceVersionId(self::TABLE_Price, 2),
+					self::FIELD_Offers_Prices => $this->getWorkspaceVersionId(self::TABLE_Price, 1) . ',' . $this->getWorkspaceVersionId(self::TABLE_Price, 2),
 				),
 				array(
 					'tableName' => self::TABLE_Offer,
@@ -374,8 +374,8 @@ class OneToNCSVTest extends IRREAbstract {
 		);
 		$this->simulateEditing($childElements);
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 2);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 3);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 2);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 3);
 
 		$this->simulateCommandByStructure(array(
 			self::TABLE_Price => array(
@@ -432,7 +432,7 @@ class OneToNCSVTest extends IRREAbstract {
 
 		$this->versionizeAllChildrenWithParent();
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 1);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 1);
 
 		$this->simulateVersionCommand(
 			array(
@@ -461,8 +461,8 @@ class OneToNCSVTest extends IRREAbstract {
 		);
 		$this->simulateEditing($childElements);
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 2);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 3);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 2);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 3);
 
 		$this->simulateCommandByStructure(array(
 			self::TABLE_Price => array(
@@ -521,8 +521,8 @@ class OneToNCSVTest extends IRREAbstract {
 
 		$this->versionizeAllChildrenWithParent();
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 2);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 3);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 2);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 3);
 
 		$this->simulateCommandByStructure(array(
 			self::TABLE_Price => array(
@@ -562,7 +562,7 @@ class OneToNCSVTest extends IRREAbstract {
 		$this->setWorkspacesConsiderReferences(TRUE);
 
 		$this->versionizeAllChildrenWithParent();
-		$versionizedHotelId = $this->getWorkpaceVersionId(self::TABLE_Hotel, 1);
+		$versionizedHotelId = $this->getWorkspaceVersionId(self::TABLE_Hotel, 1);
 
 		$this->getCommandMapAccess(1);
 
@@ -598,7 +598,7 @@ class OneToNCSVTest extends IRREAbstract {
 		$this->setWorkspacesConsiderReferences(TRUE);
 
 		$this->versionizeAllChildrenWithParent();
-		$versionizedHotelId = $this->getWorkpaceVersionId(self::TABLE_Hotel, 1);
+		$versionizedHotelId = $this->getWorkspaceVersionId(self::TABLE_Hotel, 1);
 
 		// Swap to live:
 		$this->simulateCommandByStructure(array(
@@ -699,8 +699,8 @@ class OneToNCSVTest extends IRREAbstract {
 		$this->markTestSkipped('Enable this test once http://forge.typo3.org/issues/29278 is merged');
 		$this->versionizeAllChildrenWithParent();
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 2);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 3);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 2);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 3);
 
 		$this->simulateCommand(self::COMMAND_Delete, 1, array(self::TABLE_Offer => $versionizedOfferId));
 
@@ -743,7 +743,7 @@ class OneToNCSVTest extends IRREAbstract {
 			))
 		);
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 2, self::VALUE_WorkspaceId, TRUE);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 2, self::VALUE_WorkspaceId, TRUE);
 
 		$this->simulateCommandByStructure(array(
 			self::TABLE_Offer => array(
@@ -761,8 +761,8 @@ class OneToNCSVTest extends IRREAbstract {
 			self::TABLE_Price => '1,2',
 		));
 
-		$this->assertFalse($this->getWorkpaceVersionId(self::TABLE_Offer, 2, self::VALUE_WorkspaceId, TRUE));
-		$this->assertFalse($this->getWorkpaceVersionId(self::TABLE_Price, 3, self::VALUE_WorkspaceId, TRUE));
+		$this->assertFalse($this->getWorkspaceVersionId(self::TABLE_Offer, 2, self::VALUE_WorkspaceId, TRUE));
+		$this->assertFalse($this->getWorkspaceVersionId(self::TABLE_Price, 3, self::VALUE_WorkspaceId, TRUE));
 	}
 
 	/**
@@ -785,8 +785,8 @@ class OneToNCSVTest extends IRREAbstract {
 			))
 		);
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 2, self::VALUE_WorkspaceId, TRUE);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 1);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 2, self::VALUE_WorkspaceId, TRUE);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 1);
 
 		$this->simulateCommandByStructure(array(
 			self::TABLE_Offer => array(
@@ -811,9 +811,9 @@ class OneToNCSVTest extends IRREAbstract {
 			self::TABLE_Price => '2',
 		));
 
-		$this->assertFalse($this->getWorkpaceVersionId(self::TABLE_Offer, 2, self::VALUE_WorkspaceId, TRUE));
-		$this->assertFalse($this->getWorkpaceVersionId(self::TABLE_Price, 3, self::VALUE_WorkspaceId, TRUE));
-		$this->assertFalse($this->getWorkpaceVersionId(self::TABLE_Price, 1, self::VALUE_WorkspaceId, TRUE));
+		$this->assertFalse($this->getWorkspaceVersionId(self::TABLE_Offer, 2, self::VALUE_WorkspaceId, TRUE));
+		$this->assertFalse($this->getWorkspaceVersionId(self::TABLE_Price, 3, self::VALUE_WorkspaceId, TRUE));
+		$this->assertFalse($this->getWorkspaceVersionId(self::TABLE_Price, 1, self::VALUE_WorkspaceId, TRUE));
 	}
 
 	/**
@@ -833,7 +833,7 @@ class OneToNCSVTest extends IRREAbstract {
 			))
 		);
 
-		$versionizedHotelId = $this->getWorkpaceVersionId(self::TABLE_Hotel, 1, self::VALUE_WorkspaceId, TRUE);
+		$versionizedHotelId = $this->getWorkspaceVersionId(self::TABLE_Hotel, 1, self::VALUE_WorkspaceId, TRUE);
 
 		// Swap to live:
 		$this->simulateCommandByStructure(array(

@@ -891,7 +891,7 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		$liveElements = $this->versionizeAllChildrenWithParent();
 		$this->assertWorkspaceVersions($liveElements);
 
-		$versionizedHotelId = $this->getWorkpaceVersionId(self::TABLE_Hotel, 1);
+		$versionizedHotelId = $this->getWorkspaceVersionId(self::TABLE_Hotel, 1);
 
 			// Workspace:
 		$this->assertChildren(
@@ -946,8 +946,8 @@ class OneToNForeignFieldTest extends IRREAbstract {
 			)
 		);
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 1);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 3);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 1);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 3);
 
 		$liveElements = array(
 			self::TABLE_Hotel => '1',
@@ -961,7 +961,7 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		$this->simulateEditing($liveElementsToBeVersionized);
 		$this->assertWorkspaceVersions($liveElements);
 
-		$versionizedHotelId = $this->getWorkpaceVersionId(self::TABLE_Hotel, 1);
+		$versionizedHotelId = $this->getWorkspaceVersionId(self::TABLE_Hotel, 1);
 
 			// Workspace:
 		$this->assertChildren(
@@ -1171,8 +1171,8 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		);
 		$this->simulateEditing($childElements);
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 1);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 3);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 1);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 3);
 
 		$this->simulateCommandByStructure(array(
 			self::TABLE_Price => array(
@@ -1229,7 +1229,7 @@ class OneToNForeignFieldTest extends IRREAbstract {
 
 		$this->versionizeAllChildrenWithParent();
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 1);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 1);
 
 		$this->simulateVersionCommand(
 			array(
@@ -1258,8 +1258,8 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		);
 		$this->simulateEditing($childElements);
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 1);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 3);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 1);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 3);
 
 		$this->simulateCommandByStructure(array(
 			self::TABLE_Price => array(
@@ -1318,8 +1318,8 @@ class OneToNForeignFieldTest extends IRREAbstract {
 
 		$this->versionizeAllChildrenWithParent();
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 1);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 3);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 1);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 3);
 
 		$this->simulateCommandByStructure(array(
 			self::TABLE_Price => array(
@@ -1359,7 +1359,7 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		$this->setWorkspacesConsiderReferences(TRUE);
 
 		$this->versionizeAllChildrenWithParent();
-		$versionizedHotelId = $this->getWorkpaceVersionId(self::TABLE_Hotel, 1);
+		$versionizedHotelId = $this->getWorkspaceVersionId(self::TABLE_Hotel, 1);
 
 		$this->getCommandMapAccess(1);
 
@@ -1395,7 +1395,7 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		$this->setWorkspacesConsiderReferences(TRUE);
 
 		$this->versionizeAllChildrenWithParent();
-		$versionizedHotelId = $this->getWorkpaceVersionId(self::TABLE_Hotel, 1);
+		$versionizedHotelId = $this->getWorkspaceVersionId(self::TABLE_Hotel, 1);
 
 		// Swap to live:
 		$this->simulateCommandByStructure(array(
@@ -1445,7 +1445,7 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		$this->setWorkspacesConsiderReferences(TRUE);
 
 		$this->versionizeAllChildrenWithParent();
-		$versionizedHotelId = $this->getWorkpaceVersionId(self::TABLE_Hotel, 1);
+		$versionizedHotelId = $this->getWorkspaceVersionId(self::TABLE_Hotel, 1);
 
 		$this->getCommandMapAccess(1);
 
@@ -1536,8 +1536,8 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		$firstNewId = $tceMain->substNEWwithIDs['NEW1'];
 		$secondNewId = $tceMain->substNEWwithIDs['NEW2'];
 
-		$versionizedFirstNewId = $this->getWorkpaceVersionId(self::TABLE_Offer, $firstNewId);
-		$versionizedSecondNewId = $this->getWorkpaceVersionId(self::TABLE_Offer, $secondNewId);
+		$versionizedFirstNewId = $this->getWorkspaceVersionId(self::TABLE_Offer, $firstNewId);
+		$versionizedSecondNewId = $this->getWorkspaceVersionId(self::TABLE_Offer, $secondNewId);
 
 		$this->assertSortingOrder(
 			self::TABLE_Offer, 'sorting',
@@ -1572,8 +1572,8 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		$firstNewId = $tceMain->substNEWwithIDs['NEW1'];
 		$secondNewId = $tceMain->substNEWwithIDs['NEW2'];
 
-		$versionizedFirstNewId = $this->getWorkpaceVersionId(self::TABLE_Hotel, $firstNewId);
-		$versionizedSecondNewId = $this->getWorkpaceVersionId(self::TABLE_Hotel, $secondNewId);
+		$versionizedFirstNewId = $this->getWorkspaceVersionId(self::TABLE_Hotel, $firstNewId);
+		$versionizedSecondNewId = $this->getWorkspaceVersionId(self::TABLE_Hotel, $secondNewId);
 
 		$this->assertSortingOrder(
 			self::TABLE_Hotel, 'sorting',
@@ -1610,7 +1610,7 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		$firstNewId = $tceMain->substNEWwithIDs['NEW1'];
 		$secondNewId = $tceMain->substNEWwithIDs['NEW2'];
 
-		$versionizedPageId = $this->getWorkpaceVersionId(self::TABLE_Pages, self::VALUE_Pid);
+		$versionizedPageId = $this->getWorkspaceVersionId(self::TABLE_Pages, self::VALUE_Pid);
 
 		// Swap to live:
 		$this->simulateCommandByStructure(array(
@@ -1652,9 +1652,9 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		$firstNewId = $tceMain->substNEWwithIDs['NEW1'];
 		$secondNewId = $tceMain->substNEWwithIDs['NEW2'];
 
-		$versionizedHotel = $this->getWorkpaceVersionId(self::TABLE_Hotel, 2);
-		$versionizedFirstNewId = $this->getWorkpaceVersionId(self::TABLE_Hotel, $firstNewId);
-		$versionizedSecondNewId = $this->getWorkpaceVersionId(self::TABLE_Hotel, $secondNewId);
+		$versionizedHotel = $this->getWorkspaceVersionId(self::TABLE_Hotel, 2);
+		$versionizedFirstNewId = $this->getWorkspaceVersionId(self::TABLE_Hotel, $firstNewId);
+		$versionizedSecondNewId = $this->getWorkspaceVersionId(self::TABLE_Hotel, $secondNewId);
 
 		$this->assertSortingOrder(
 			self::TABLE_Hotel, 'sorting',
@@ -1685,7 +1685,7 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		$firstNewId = $tceMain->substNEWwithIDs['NEW1'];
 		$secondNewId = $tceMain->substNEWwithIDs['NEW2'];
 
-		$versionizedPageId = $this->getWorkpaceVersionId(self::TABLE_Pages, self::VALUE_Pid);
+		$versionizedPageId = $this->getWorkspaceVersionId(self::TABLE_Pages, self::VALUE_Pid);
 
 		// Swap to live:
 		$this->simulateCommandByStructure(array(
@@ -1766,8 +1766,8 @@ class OneToNForeignFieldTest extends IRREAbstract {
 		$this->markTestSkipped('Enable this test once http://forge.typo3.org/issues/29278 is merged');
 		$this->versionizeAllChildrenWithParent();
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 1);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 3);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 1);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 3);
 
 		$this->simulateCommand(self::COMMAND_Delete, 1, array(self::TABLE_Offer => $versionizedOfferId));
 
@@ -1810,7 +1810,7 @@ class OneToNForeignFieldTest extends IRREAbstract {
 			))
 		);
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 1, self::VALUE_WorkspaceId, TRUE);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 1, self::VALUE_WorkspaceId, TRUE);
 
 		$this->simulateCommandByStructure(array(
 			self::TABLE_Offer => array(
@@ -1828,8 +1828,8 @@ class OneToNForeignFieldTest extends IRREAbstract {
 			self::TABLE_Price => '1,2',
 		));
 
-		$this->assertFalse($this->getWorkpaceVersionId(self::TABLE_Offer, 1, self::VALUE_WorkspaceId, TRUE));
-		$this->assertFalse($this->getWorkpaceVersionId(self::TABLE_Price, 3, self::VALUE_WorkspaceId, TRUE));
+		$this->assertFalse($this->getWorkspaceVersionId(self::TABLE_Offer, 1, self::VALUE_WorkspaceId, TRUE));
+		$this->assertFalse($this->getWorkspaceVersionId(self::TABLE_Price, 3, self::VALUE_WorkspaceId, TRUE));
 	}
 
 	/**
@@ -1852,8 +1852,8 @@ class OneToNForeignFieldTest extends IRREAbstract {
 			))
 		);
 
-		$versionizedOfferId = $this->getWorkpaceVersionId(self::TABLE_Offer, 1, self::VALUE_WorkspaceId, TRUE);
-		$versionizedPriceId = $this->getWorkpaceVersionId(self::TABLE_Price, 1);
+		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 1, self::VALUE_WorkspaceId, TRUE);
+		$versionizedPriceId = $this->getWorkspaceVersionId(self::TABLE_Price, 1);
 
 		$this->simulateCommandByStructure(array(
 			self::TABLE_Offer => array(
@@ -1878,9 +1878,9 @@ class OneToNForeignFieldTest extends IRREAbstract {
 			self::TABLE_Price => '2',
 		));
 
-		$this->assertFalse($this->getWorkpaceVersionId(self::TABLE_Offer, 1, self::VALUE_WorkspaceId, TRUE));
-		$this->assertFalse($this->getWorkpaceVersionId(self::TABLE_Price, 3, self::VALUE_WorkspaceId, TRUE));
-		$this->assertFalse($this->getWorkpaceVersionId(self::TABLE_Price, 1, self::VALUE_WorkspaceId, TRUE));
+		$this->assertFalse($this->getWorkspaceVersionId(self::TABLE_Offer, 1, self::VALUE_WorkspaceId, TRUE));
+		$this->assertFalse($this->getWorkspaceVersionId(self::TABLE_Price, 3, self::VALUE_WorkspaceId, TRUE));
+		$this->assertFalse($this->getWorkspaceVersionId(self::TABLE_Price, 1, self::VALUE_WorkspaceId, TRUE));
 	}
 
 	/**
@@ -1900,7 +1900,7 @@ class OneToNForeignFieldTest extends IRREAbstract {
 			))
 		);
 
-		$versionizedHotelId = $this->getWorkpaceVersionId(self::TABLE_Hotel, 1, self::VALUE_WorkspaceId, TRUE);
+		$versionizedHotelId = $this->getWorkspaceVersionId(self::TABLE_Hotel, 1, self::VALUE_WorkspaceId, TRUE);
 
 		// Swap to live:
 		$this->simulateCommandByStructure(array(
