@@ -27,7 +27,7 @@ namespace TYPO3\CMS\Workspaces\Tests\Functional\DataHandling;
 require_once(dirname(__FILE__). '/IRREAbstract.php');
 
 /**
- * Test case for 1:n ff relations.
+ * Test case for m:n MM relations
  *
  */
 class MToNMMTest extends IRREAbstract {
@@ -135,6 +135,7 @@ class MToNMMTest extends IRREAbstract {
 	 */
 	public function isManyToManyRelationUpdatedForVersionedRecordsOnBothSidesWithDifferentRelations() {
 		$this->markTestSkipped('This test is failing - the Core needs to be fixed');
+
 		$editingElements = array(
 			self::TABLE_Hotel => 1,
 			self::TABLE_Offer => 1,
