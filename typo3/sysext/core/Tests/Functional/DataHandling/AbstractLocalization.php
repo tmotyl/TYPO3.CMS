@@ -26,12 +26,12 @@ namespace TYPO3\CMS\Core\Tests\Functional\DataHandling;
 
 require_once(dirname(__FILE__). '/IRREAbstract.php');
 
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Generic test helpers.
+ * Generic test helpers for localization tests
  *
- * @author Oliver Hader <oliver@typo3.org>
  */
 abstract class AbstractLocalization extends IRREAbstract {
 	const COMMAND_LocalizeSynchronize = 'inlineLocalizeSynchronize';
@@ -40,6 +40,26 @@ abstract class AbstractLocalization extends IRREAbstract {
 
 	const VALUE_LocalizationMode_Keep = 'keep';
 	const VALUE_LocalizationMode_Select = 'select';
+
+	const TABLE_Hotel = 'tx_irretutorial_mnmmasym_hotel';
+	const TABLE_Offer = 'tx_irretutorial_mnmmasym_offer';
+	const TABLE_Price = 'tx_irretutorial_mnmmasym_price';
+	const TABLE_Relation_Hotel_Offer = 'tx_irretutorial_mnmmasym_hotel_offer_rel';
+	const TABLE_Relation_Offer_Price = 'tx_irretutorial_mnmmasym_offer_price_rel';
+
+	const FIELD_Hotel_Offers = 'offers';
+	const FIELD_Offer_Hotels = 'hotels';
+	const FIELD_Offer_Prices = 'prices';
+	const FIELD_Price_Offers = 'offers';
+
+	/**
+	 * @var array
+	 */
+	protected $structure = array(
+		self::TABLE_Hotel => array(self::FIELD_Hotel_Offers),
+		self::TABLE_Offer => array(self::FIELD_Offer_Hotels, self::FIELD_Offer_Prices),
+		self::TABLE_Price => array(self::FIELD_Price_Offers),
+	);
 
 	/**
 	 * Asserts that accordant localizations exist.
@@ -53,11 +73,11 @@ abstract class AbstractLocalization extends IRREAbstract {
 		foreach ($tables as $tableName => $idList) {
 			$ids = GeneralUtility::trimExplode(',', $idList, TRUE);
 			foreach ($ids as $id) {
-				$localization = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecordLocalization($tableName, $id, $languageId);
+				$localization = BackendUtility::getRecordLocalization($tableName, $id, $languageId);
 				$isLocalization = is_array($localization) && count($localization);
 				$this->assertTrue(
 					!($expected XOR $isLocalization),
-					'Localization for ' . $tableName . ':' . $id . ($expected ? ' not' : '') . ' availabe'
+					'Localization for ' . $tableName . ':' . $id . ($expected ? ' not' : '') . ' available'
 				);
 			}
 		}
@@ -72,7 +92,7 @@ abstract class AbstractLocalization extends IRREAbstract {
 	 * @return boolean
 	 */
 	protected function getLocalizationId($tableName, $id, $languageId = self::VALUE_LanguageId) {
-		$localization = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecordLocalization($tableName, $id, $languageId);
+		$localization = BackendUtility::getRecordLocalization($tableName, $id, $languageId);
 		if (is_array($localization) && count($localization)) {
 			return $localization[0]['uid'];
 		}
