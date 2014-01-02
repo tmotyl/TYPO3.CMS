@@ -183,7 +183,7 @@ abstract class IRREAbstract extends \TYPO3\CMS\Core\Tests\Functional\DataHandlin
 				$workspaceVersion = BackendUtility::getWorkspaceVersionOfRecord($workspaceId, $tableName, $id);
 				$this->assertTrue(
 					($expected ? $workspaceVersion !== FALSE : $workspaceVersion === FALSE),
-					'Workspace version for ' . $tableName . ':' . $id . ($expected ? ' not' : '') . ' availabe'
+					'Workspace version for ' . $tableName . ':' . $id . ($expected ? ' not' : '') . ' available'
 				);
 			}
 		}

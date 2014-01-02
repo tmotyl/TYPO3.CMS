@@ -72,7 +72,7 @@ class OneToNCSVTest extends IRREAbstract {
 	 * @return void
 	 * @test
 	 */
-	public function areAllChildrenVersonizedWithParent() {
+	public function areAllChildrenVersionizedWithParent() {
 		$liveElements = $this->versionizeAllChildrenWithParent();
 		$this->assertWorkspaceVersions($liveElements);
 
@@ -415,7 +415,7 @@ class OneToNCSVTest extends IRREAbstract {
 					'uid' => 2,
 					't3ver_oid' => 0,
 					't3_origuid' => 2,
-					't3ver_id' => 1, // it was pubslished
+					't3ver_id' => 1, // it was published
 					't3ver_label' => 'Auto-created for WS #' . self::VALUE_WorkspaceId,
 					self::FIELD_Offers_Prices => '3',
 				),
@@ -504,7 +504,7 @@ class OneToNCSVTest extends IRREAbstract {
 					'uid' => 2,
 					't3ver_oid' => 0,
 					't3_origuid' => 2,
-					't3ver_id' => 1, // it was pubslished
+					't3ver_id' => 1, // it was published
 					't3ver_label' => 'Auto-created for WS #' . self::VALUE_WorkspaceId,
 					self::FIELD_Offers_Prices => '3',
 				),
@@ -690,13 +690,14 @@ class OneToNCSVTest extends IRREAbstract {
 	}
 
 	/**
-	 * Versionized version will be modifed and one child branch is removed.
+	 * Versionized version will be modified and one child branch is removed.
 	 *
 	 * @return void
 	 * @test
 	 */
 	public function areChildRecordsConsideredToBeRevertedOnEditing() {
 		$this->markTestSkipped('Enable this test once http://forge.typo3.org/issues/29278 is merged');
+
 		$this->versionizeAllChildrenWithParent();
 
 		$versionizedOfferId = $this->getWorkspaceVersionId(self::TABLE_Offer, 2);
