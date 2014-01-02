@@ -71,13 +71,13 @@ class DataHandlerTest extends \TYPO3\CMS\Core\Tests\FunctionalTestCase {
 		$dataHandler->start($dataArray, array());
 		$dataHandler->process_datamap();
 
-		$versionedId = $dataHandler->getAutoVersionId('tt_content', $uid);
+		$versionizedId = $dataHandler->getAutoVersionId('tt_content', $uid);
 
 		$database = $this->getDatabase();
-		$row = $database->exec_SELECTgetSingleRow('*', 'tt_content', 'uid = ' . $versionedId);
+		$row = $database->exec_SELECTgetSingleRow('*', 'tt_content', 'uid = ' . $versionizedId);
 		$this->assertNotEmpty($row);
 
-		$this->assertEquals($versionedId, $row['uid']);
+		$this->assertEquals($versionizedId, $row['uid']);
 		$this->assertEquals(-1, $row['pid']);
 		$this->assertEquals("Test Title [workspace $workspaceId]", $row['header']);
 		$this->assertEquals(0, $row['l18n_parent'], 'wrong l18n_parent');

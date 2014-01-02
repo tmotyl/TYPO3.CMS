@@ -46,7 +46,7 @@ class OneToNCSVTest extends IRREAbstract {
 	public function setUp() {
 		parent::setUp();
 
-		$this->importDataSet(dirname(__FILE__) . '/Fixtures/data_1ncsv.xml');
+		$this->importDataSet(dirname(__FILE__) . '/Fixtures/OneToNCSV.xml');
 	}
 
 	/**

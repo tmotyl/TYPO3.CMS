@@ -70,7 +70,7 @@ class MtoNMMAsymmetricLocalizationKeepTest extends AbstractLocalization {
 			}
 		}
 
-		$this->importDataSet(dirname(__FILE__) . '/Fixtures/data_mnmmasym.xml');
+		$this->importDataSet(dirname(__FILE__) . '/Fixtures/MToNMMAsymmetric.xml');
 	}
 
 	/**

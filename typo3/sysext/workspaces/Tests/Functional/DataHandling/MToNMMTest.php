@@ -59,7 +59,7 @@ class MToNMMTest extends IRREAbstract {
 	public function setUp() {
 		parent::setUp();
 
-		$this->importDataSet(dirname(__FILE__) . '/Fixtures/data_mnmmasym.xml');
+		$this->importDataSet(ORIGINAL_ROOT . 'typo3/sysext/core/Tests/Functional/DataHandling/Fixtures/MToNMMAsymmetric.xml');
 	}
 
 	/**
